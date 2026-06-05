@@ -99,7 +99,7 @@ Three widget styles to choose from: **Circular** (icon only), **Rectangular** (f
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/PositivelyLocked.git
+git clone https://github.com/XtianBDevn/PositivelyLocked.git
 
 # Open in Xcode
 cd PositivelyLocked
@@ -111,7 +111,7 @@ open PositivelyLocked.xcodeproj
 1. Select the `PositivelyLocked` target → Signing & Capabilities → Set your team
 2. Select the `AffirmationWidgetExtension` target → Signing & Capabilities → Set your team
 3. Build and run (⌘R)
-4. Add the widget to your Lock Screen (see [Widget Setup Guide](../../wiki/Widget-Setup-Guide))
+4. Add the widget to your Lock Screen (see the [Widget Setup Guide](wiki/Widget-Setup-Guide.md))
 
 ---
 
