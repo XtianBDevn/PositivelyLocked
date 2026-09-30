@@ -36,7 +36,9 @@ struct AffirmationTimelineProvider: TimelineProvider {
                 to: currentDate
             )!
             
-            let affirmation = AffirmationManager.randomAffirmation()
+            let affirmation = hourOffset == 0
+                ? AffirmationManager.getCurrentAffirmation()
+                : AffirmationManager.randomAffirmation()
             let category = AffirmationManager.category(for: affirmation) ?? "Joy"
             
             let entry = AffirmationEntry(

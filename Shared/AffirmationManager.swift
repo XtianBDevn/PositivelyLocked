@@ -1,10 +1,14 @@
 import Foundation
+import WidgetKit
 
 /// Manages the collection of positive affirmations shared between the main app and the widget extension.
 /// Uses App Groups to share data between the app and its widget.
 struct AffirmationManager {
     
     static let appGroupIdentifier = "group.com.positivelylocked.shared"
+    private static let currentAffirmationKey = "currentAffirmation"
+    private static let lastUpdatedKey = "lastUpdated"
+    private static let selectedCategoryKey = "selectedCategory"
     
     /// Complete collection of positive affirmations organized by category
     static let affirmations: [String: [String]] = [
@@ -75,27 +79,55 @@ struct AffirmationManager {
         affirmations.values.flatMap { $0 }
     }
     
-    /// Returns a random affirmation from all categories
+    /// Returns a random affirmation from the selected category, or from every category when none is selected.
     static func randomAffirmation() -> String {
-        allAffirmations.randomElement() ?? "You are amazing just as you are"
+        if let category = getSelectedCategory() {
+            return randomAffirmation(from: category)
+        }
+        return allAffirmations.randomElement() ?? "You are amazing just as you are"
     }
     
-    /// Returns a random affirmation from a specific category
+    /// Returns a random affirmation from a specific category.
     static func randomAffirmation(from category: String) -> String {
-        affirmations[category]?.randomElement() ?? randomAffirmation()
+        if let affirmation = affirmations[category]?.randomElement() {
+            return affirmation
+        }
+        return allAffirmations.randomElement() ?? "You are amazing just as you are"
     }
     
     /// Gets the current affirmation stored in shared UserDefaults
     static func getCurrentAffirmation() -> String {
         let defaults = UserDefaults(suiteName: appGroupIdentifier)
-        return defaults?.string(forKey: "currentAffirmation") ?? randomAffirmation()
+        return defaults?.string(forKey: currentAffirmationKey) ?? randomAffirmation()
+    }
+    
+    /// Category the user picked in the app, if it still exists in the catalog.
+    static func getSelectedCategory() -> String? {
+        let defaults = UserDefaults(suiteName: appGroupIdentifier)
+        guard let category = defaults?.string(forKey: selectedCategoryKey),
+              affirmations[category] != nil else {
+            return nil
+        }
+        return category
+    }
+    
+    /// Saves or clears the category shared with the widget.
+    static func saveSelectedCategory(_ category: String?) {
+        let defaults = UserDefaults(suiteName: appGroupIdentifier)
+        if let category, affirmations[category] != nil {
+            defaults?.set(category, forKey: selectedCategoryKey)
+        } else {
+            defaults?.removeObject(forKey: selectedCategoryKey)
+        }
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     /// Saves a new affirmation to shared UserDefaults
     static func saveCurrentAffirmation(_ affirmation: String) {
         let defaults = UserDefaults(suiteName: appGroupIdentifier)
-        defaults?.set(affirmation, forKey: "currentAffirmation")
-        defaults?.set(Date(), forKey: "lastUpdated")
+        defaults?.set(affirmation, forKey: currentAffirmationKey)
+        defaults?.set(Date(), forKey: lastUpdatedKey)
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     /// Generates and saves a new random affirmation

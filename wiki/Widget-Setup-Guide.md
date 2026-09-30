@@ -52,7 +52,7 @@ iOS optimizes battery life by scheduling widget updates. Positively Locked manag
 
 ### Widget is blank or showing placeholder text
 1. **Open the main app**: Launch the main Positively Locked app. This initializes the database and writes default values to the App Group.
-2. **Verify App Group ID**: Ensure the App Group identifier in `AffirmationManager.swift` matches the capability in Xcode exactly.
+2. **Verify App Group ID**: `AffirmationManager.appGroupIdentifier` and both entitlements files must all be `group.com.positivelylocked.shared`.
 
 ### Widget does not appear in the gallery
 1. **Restart your device**: iOS sometimes fails to register newly installed widget extensions. A quick device restart resolves this 99% of the time.

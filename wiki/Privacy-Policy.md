@@ -14,9 +14,9 @@
 
 ## Local Storage Only
 
-- All of your data — including your selected mindset category, your favorited affirmations, and custom settings — is stored directly on your physical device.
-- This data is saved using iOS `UserDefaults` within a secured **App Group** sandbox, which allows the main application to securely share your selected category with the Lock Screen widget extension.
-- This data never leaves your device and is never uploaded to the cloud.
+- The app stores the category you select and the current affirmation text on the device.
+- Those values are saved with `UserDefaults` in the App Group `group.com.positivelylocked.shared`, so the widget extension can read them.
+- There is no account, no favorites list, and no custom profile. This data stays on the device.
 
 ---
 
@@ -29,7 +29,7 @@ Positively Locked does not request access to:
 - ❌ Your Photo Library
 - ❌ Your Network or Bluetooth
 
-The app only requests permission to send local notifications (if you choose to enable scheduled background updates), which are processed entirely on-device by iOS.
+The app does not ask for permission to send notifications.
 
 ---
 

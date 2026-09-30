@@ -26,7 +26,7 @@ The project is structured to share data efficiently between the main application
 
 ### Core Code Files
 
-- **`Shared/AffirmationManager.swift`**: The single source of truth for all affirmations. It handles reading/writing user preferences (active category, favorites) to shared memory.
+- **`Shared/AffirmationManager.swift`**: The single source of truth for all affirmations. It reads and writes the selected category and current affirmation in the App Group. There is no favorites list.
 - **`PositivelyLocked/AppState.swift`**: An `ObservableObject` that tracks active state, handles scene transitions (locking/unlocking), and manages animation triggers.
 - **`PositivelyLocked/UnlockAnimationView.swift`**: The custom particle physics engine that handles rendering the celebratory burst when unlocking.
 - **`AffirmationWidget/AffirmationWidget.swift`**: Implements the `TimelineProvider` and SwiftUI views for the Lock Screen widgets.
@@ -34,6 +34,8 @@ The project is structured to share data efficiently between the main application
 ---
 
 ## Customization Guide
+
+The samples below are older than the source. Edit the Swift files. The project does not define `appGroupID`, `triggerUnlockCelebration`, or a `generateParticles` loop that takes a `count` parameter. The live names are `appGroupIdentifier`, `HapticManager.playUnlockCelebration()`, and `UnlockAnimationView.generateParticles()`. There is no favorites list. The selected category is stored in the App Group under `selectedCategory`.
 
 ### 1. Adding Your Own Affirmations
 

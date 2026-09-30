@@ -17,6 +17,9 @@
 		A1000011 /* AffirmationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000005; };
 		A1000012 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2000012; };
 		A1000013 /* WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A3000002; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A1000014 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000014; };
+		A1000015 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A2000015; };
+		A1000016 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A2000016; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,7 +27,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = A5000001;
 			proxyType = 1;
-			remoteGlobalIDString = A3000002;
+			remoteGlobalIDString = A9000002;
 			remoteInfo = AffirmationWidgetExtension;
 		};
 /* End PBXContainerItemProxy section */
@@ -52,6 +55,11 @@
 		A2000006 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A2000010 /* AffirmationWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffirmationWidget.swift; sourceTree = "<group>"; };
 		A2000012 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A2000014 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		A2000015 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		A2000016 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		A2000017 /* PositivelyLocked.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PositivelyLocked.entitlements; sourceTree = "<group>"; };
+		A2000018 /* AffirmationWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AffirmationWidget.entitlements; sourceTree = "<group>"; };
 		A3000001 /* PositivelyLocked.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PositivelyLocked.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3000002 /* AffirmationWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AffirmationWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -91,6 +99,9 @@
 				A2000002 /* ContentView.swift */,
 				A2000003 /* UnlockAnimationView.swift */,
 				A2000004 /* AppState.swift */,
+				A2000014 /* HapticManager.swift */,
+				A2000017 /* PositivelyLocked.entitlements */,
+				A2000015 /* PrivacyInfo.xcprivacy */,
 				A2000006 /* Assets.xcassets */,
 			);
 			path = PositivelyLocked;
@@ -100,6 +111,8 @@
 			isa = PBXGroup;
 			children = (
 				A2000010 /* AffirmationWidget.swift */,
+				A2000018 /* AffirmationWidget.entitlements */,
+				A2000016 /* PrivacyInfo.xcprivacy */,
 				A2000012 /* Assets.xcassets */,
 			);
 			path = AffirmationWidget;
@@ -137,7 +150,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				A4000001 /* PBXContainerItemProxy */,
+				A4000002 /* PBXTargetDependency */,
 			);
 			name = PositivelyLocked;
 			productName = PositivelyLocked;
@@ -204,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1000006 /* Assets.xcassets in Resources */,
+				A1000015 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1000012 /* Assets.xcassets in Resources */,
+				A1000016 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +242,7 @@
 				A1000003 /* UnlockAnimationView.swift in Sources */,
 				A1000004 /* AppState.swift in Sources */,
 				A1000005 /* AffirmationManager.swift in Sources */,
+				A1000014 /* HapticManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,10 +258,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A4000001 /* PBXTargetDependency */ = {
+		A4000002 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A9000002;
-			targetProxy = A4000001;
+			target = A9000002 /* AffirmationWidgetExtension */;
+			targetProxy = A4000001 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -310,6 +326,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PositivelyLocked/PositivelyLocked.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
@@ -339,6 +356,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PositivelyLocked/PositivelyLocked.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
@@ -368,6 +386,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = AffirmationWidget/AffirmationWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
@@ -395,6 +414,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = AffirmationWidget/AffirmationWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
