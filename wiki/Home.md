@@ -4,7 +4,7 @@
   <img src="https://raw.githubusercontent.com/XtianBDevn/PositivelyLocked/main/docs/screenshots/app-icon.png" alt="Positively Locked" width="100" height="100" style="border-radius: 20px;">
 </p>
 
-Welcome to the official documentation wiki for **Positively Locked** — a modern iOS application that shows a positive affirmation on your Lock Screen when you pick up your phone, and plays a celebration animation when you unlock it.
+Welcome to the official documentation wiki for **Positively Locked** — a modern iOS application that shows a positive affirmation on your Lock Screen widget, and plays a celebration animation when you open the app.
 
 ## Quick Navigation
 
@@ -20,15 +20,7 @@ Welcome to the official documentation wiki for **Positively Locked** — a moder
 **Positively Locked** is designed to do exactly one thing beautifully:
 
 1. **Pick Up (Raise to Wake)**: You are greeted with a beautifully styled, high-contrast positive affirmation on your Lock Screen.
-2. **Unlock (Celebration)**: As soon as your face/fingerprint unlocks the device, the app transitions into a fluid particle celebration animation accompanied by synchronized, gentle haptic pulses.
-
----
-
-## Interactive Simulator & Website
-
-We have built a gorgeous interactive landing page and web-based device simulator. You can test out different categories, read affirmations, and preview the unlock animation directly in your browser!
-
-👉 **[Visit the Live Website](https://poslocked-jm4k64qg.manus.space)**
+2. **Open the app**: When Positively Locked becomes active, it plays a particle celebration with haptic feedback. iOS does not let the app run that animation on the system unlock screen itself.
 
 ---
 

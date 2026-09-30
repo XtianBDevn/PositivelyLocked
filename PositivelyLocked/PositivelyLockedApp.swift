@@ -18,11 +18,9 @@ struct PositivelyLockedApp: App {
     private func handleScenePhaseChange(from oldPhase: ScenePhase, to newPhase: ScenePhase) {
         switch newPhase {
         case .active:
-            // User has unlocked the phone and opened the app
+            // App became active. triggerUnlockAnimation already stores the affirmation it shows.
             if oldPhase == .background || oldPhase == .inactive {
                 appState.triggerUnlockAnimation()
-                // Refresh the affirmation for next lock screen display
-                AffirmationManager.refreshAffirmation()
             }
         case .background:
             // App moved to background - prepare new affirmation for widget

@@ -24,7 +24,7 @@ struct ContentView: View {
 
 struct MainView: View {
     @EnvironmentObject var appState: AppState
-    @State private var selectedCategory: String? = nil
+    @State private var selectedCategory: String? = AffirmationManager.getSelectedCategory()
     
     var body: some View {
         NavigationStack {
@@ -134,14 +134,18 @@ struct MainView: View {
                         isSelected: selectedCategory == category
                     )
                     .onTapGesture {
+                        HapticManager.selectionChanged()
                         withAnimation(.spring(response: 0.3)) {
                             if selectedCategory == category {
                                 selectedCategory = nil
+                                AffirmationManager.saveSelectedCategory(nil)
+                                appState.currentAffirmation = AffirmationManager.randomAffirmation()
                             } else {
                                 selectedCategory = category
+                                AffirmationManager.saveSelectedCategory(category)
                                 appState.currentAffirmation = AffirmationManager.randomAffirmation(from: category)
-                                AffirmationManager.saveCurrentAffirmation(appState.currentAffirmation)
                             }
+                            AffirmationManager.saveCurrentAffirmation(appState.currentAffirmation)
                         }
                     }
                 }

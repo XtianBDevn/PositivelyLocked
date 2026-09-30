@@ -161,6 +161,8 @@ struct UnlockAnimationView: View {
     // MARK: - Animation Logic
     
     private func startAnimation() {
+        HapticManager.playUnlockCelebration()
+
         // Background fade in
         withAnimation(.easeIn(duration: 0.3)) {
             backgroundOpacity = 1.0
@@ -273,17 +275,16 @@ struct ParticleView: View {
             }
     }
     
-    @ViewBuilder
-    private var particleShape: some Shape {
+    private var particleShape: AnyShape {
         switch particle.shape {
         case .circle:
-            Circle()
+            return AnyShape(Circle())
         case .star:
-            StarShape(points: 5)
+            return AnyShape(StarShape(points: 5))
         case .diamond:
-            DiamondShape()
+            return AnyShape(DiamondShape())
         case .sparkle:
-            StarShape(points: 4)
+            return AnyShape(StarShape(points: 4))
         }
     }
 }

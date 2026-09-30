@@ -24,7 +24,7 @@
 
 ## What is Positively Locked?
 
-**Positively Locked** is a focused iOS application that does one thing beautifully: it displays a positive affirmation on your Lock Screen every time you pick up your phone, and rewards you with a stunning celebration animation when you unlock it.
+**Positively Locked** is a focused iOS application that displays a positive affirmation on your Lock Screen widget, and plays a celebration animation when you open the app.
 
 No social feeds. No notifications. No distractions. Just a moment of positivity every time you reach for your device.
 
@@ -61,7 +61,7 @@ Three widget styles to choose from: **Circular** (icon only), **Rectangular** (f
 | Feature | Description |
 |---------|-------------|
 | **Lock Screen Widget** | See a positive affirmation every time you pick up your phone |
-| **Unlock Animation** | Enjoy a particle celebration with haptic feedback when you unlock |
+| **Unlock Animation** | Particle celebration with haptic feedback when you open the app |
 | **48 Affirmations** | Curated across 6 categories: Self-Worth, Strength, Gratitude, Peace, Growth, Joy |
 | **Auto-Refresh** | New affirmation every 30 minutes on the Lock Screen |
 | **Category Filtering** | Choose which type of affirmation speaks to you |
@@ -74,15 +74,15 @@ Three widget styles to choose from: **Circular** (icon only), **Rectangular** (f
 ## How It Works
 
 ```
-┌─────────────────┐     ┌──────────────────┐     ┌─────────────────────┐
-│  Pick Up Phone  │────▶│  See Affirmation  │────▶│  Unlock = Celebrate │
-│  (Raise to Wake)│     │  (Lock Screen)    │     │  (Animation + Haptic)│
-└─────────────────┘     └──────────────────┘     └─────────────────────┘
+┌─────────────────┐     ┌──────────────────┐     ┌──────────────────────┐
+│  Pick Up Phone  │────▶│  See Affirmation │────▶│ Open App = Celebrate │
+│  (Raise to Wake)│     │  (Lock Screen)   │     │ (Animation + Haptic) │
+└─────────────────┘     └──────────────────┘     └──────────────────────┘
 ```
 
 1. **Pick up your phone** — iOS "Raise to Wake" lights up the screen
 2. **See your affirmation** — The Lock Screen widget displays today's positive message
-3. **Unlock your phone** — A beautiful particle animation celebrates the moment
+3. **Open Positively Locked** — A particle animation celebrates the moment
 4. **Fresh content** — A new affirmation is prepared for next time
 
 ---
@@ -141,8 +141,9 @@ PositivelyLocked/
 │   ├── AppState.swift               # Observable state management
 │   ├── ContentView.swift            # Main UI with categories
 │   ├── UnlockAnimationView.swift    # Particle celebration system
-│   ├── HapticManager.swift          # Tactile feedback
-│   └── NotificationManager.swift    # Widget refresh coordination
+│   ├── HapticManager.swift          # Tactile feedback (compiled into the app)
+│   ├── PrivacyInfo.xcprivacy        # Required-reason API manifest
+│   └── NotificationManager.swift    # On disk only; not a member of either target
 ├── AffirmationWidget/                # WidgetKit extension
 │   └── AffirmationWidget.swift      # All widget sizes and views
 ├── Shared/                           # Shared between targets

@@ -36,34 +36,37 @@ open PositivelyLocked.xcodeproj
 
 ## Configuring Targets & Capabilities
 
-Because the app shares data with its Lock Screen widget, it uses **App Groups**. You must configure this capability with your developer account.
+The app and widget share one App Group. That identifier is already the same in three places. Leave it as written unless you change all three together:
+
+- `PositivelyLocked/PositivelyLocked.entitlements`
+- `AffirmationWidget/AffirmationWidget.entitlements`
+- `AffirmationManager.appGroupIdentifier` in `Shared/AffirmationManager.swift`
+
+The value is `group.com.positivelylocked.shared`. There is no `appGroupID` property.
+
+Bundle identifiers already in the project:
+
+- App: `com.positivelylocked.app`
+- Widget: `com.positivelylocked.app.widget`
+
+Version 1.0 (build 1) is set on both targets. The extension build number must stay equal to the app build number.
 
 ### 1. Configure the Main App Target
 
-1. In Xcode's left sidebar, select the top-level **PositivelyLocked** project folder.
+1. In Xcode's left sidebar, select the top-level **PositivelyLocked** project.
 2. Under **Targets**, select **PositivelyLocked**.
-3. Go to the **Signing & Capabilities** tab.
+3. Open **Signing & Capabilities**.
 4. Check **Automatically manage signing** and select your developer **Team**.
-5. Scroll down to the **App Groups** section.
-6. Click the `+` button and add a group named `group.com.yourname.PositivelyLocked` (replace `yourname` with your unique bundle identifier or developer name).
-7. Ensure this new App Group is checked.
+5. Confirm **App Groups** lists `group.com.positivelylocked.shared` and is checked. If signing says the group is not on the team, register that exact identifier under Apple Developer → Identifiers → App Groups, then enable it for both App IDs.
 
 ### 2. Configure the Widget Target
 
 1. Under **Targets**, select **AffirmationWidgetExtension**.
-2. Go to the **Signing & Capabilities** tab.
-3. Select the same developer **Team**.
-4. Scroll down to the **App Groups** section.
-5. Check the exact same App Group you created for the main app target (`group.com.yourname.PositivelyLocked`).
+2. Open **Signing & Capabilities**.
+3. Select the same **Team**.
+4. Confirm `group.com.positivelylocked.shared` is checked.
 
-### 3. Update the Shared App Group Name in Code
-
-Open `Shared/AffirmationManager.swift` and update the `appGroupID` variable to match your group name:
-
-```swift
-// Change this to your actual App Group ID
-static let appGroupID = "group.com.yourname.PositivelyLocked"
-```
+Lock Screen widgets in this project use WidgetKit accessory families. They do not use Family Controls, Screen Time, or Device Activity, so no extra Apple entitlement approval is required for the widget.
 
 ---
 
